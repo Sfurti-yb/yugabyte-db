@@ -52,10 +52,5 @@ For fully runnable code snippets and exaplantion for common operations, see the 
 | Project | Type | Usage Examples |
 | :------ | :--- | :------------- |
 | [Postgres Psycopg2](/latest/reference/drivers/python/postgres-psycopg2-reference/) | Python Driver | [Hello World](/latest/quick-start/build-apps/python/ysql-psycopg2) <br />[CRUD App](postgres-psycopg2)
-| [SQLAlchemy](sqlalchemy) | ORM |  [Hello World](/latest/quick-start/build-apps/python/ysql-sqlalchemy) <br />[CRUD App](postgres-psycopg2) |
-| [Django](django) | ORM |  Hello World <br />[CRUD App](yugabyte-jdbc) |
-
-## Next Steps
-
-<!-- - Learn how to read and modify data using the YugabyteDB JDBC driver in our [CRUD Opertions guide](yugabyte-jdbc).
-- Learn how to [develop Spring Boot Applications using YugabyteDB JDBC Driver](/latest/integrations/spring-framework/sdyb/). -->
+| [SQLAlchemy](sqlalchemy) | ORM |  [Hello World](sqlalchemy) <br />[CRUD App](/latest/quick-start/build-apps/python/ysql-sqlalchemy) |
+| [Django](django) | ORM | [Hello World](django) <br />[CRUD App](/latest/quick-start/build-apps/python/ysql-django) |
