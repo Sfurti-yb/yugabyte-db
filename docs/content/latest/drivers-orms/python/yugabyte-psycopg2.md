@@ -49,7 +49,7 @@ for Python App development using the YugabyteDB Psycopg2 driver.
 
 ### Step 1: Add the YugabyteDB Driver Dependency
 
-<!-- TODO: After publishing the driver -->
+To add the YugabyteDB Psycopg2 you must have a Postgresql version of 12 or older (preferrably 14). Visit the [Github repository](https://github.com/yugabyte/psycopg2) of psycopg2-yugabytedb and clone it. Move into the the folder and run the `pip install .` command. This should install the driver on your local setup. The driver will soon also be available on Pypi to download.
 
 ### Step 2: Connect to your Cluster
 
