@@ -69,7 +69,7 @@ Import the YugabyteDB PGX driver package by adding the following import statemen
 
 ```go
 import (
-  "github.com/yugabyte/pgx/v4"
+  "github.com/yugabyte/pgx/v5"
 )
 ```
 
@@ -79,17 +79,16 @@ To install the package locally, run the following commands:
 mkdir yb-pgx
 cd yb-pgx
 go mod init hello
-go get github.com/yugabyte/pgx/v4
-go get github.com/yugabyte/pgx/v4/pgxpool # Install pgxpool package if you write your application with pgxpool.Connect().
+go mod tidy
 ```
 
 Optionally, you can choose to import the pgxpool package instead. Refer to [Use pgxpool API](../../../reference/drivers/go/yb-pgx-reference/#use-pgxpool-api) to learn more.
 
 ### Step 2: Set up the database connection
 
-Go applications can connect to the YugabyteDB database using the `pgx.Connect()` and `pgxpool.Connect()` functions. The `pgx` package includes all the common functions or structs required for working with YugabyteDB.
+Go applications can connect to the YugabyteDB database using the `pgx.Connect()` and `pgxpool.New()` functions. The `pgx` package includes all the common functions or structs required for working with YugabyteDB.
 
-Use the `pgx.Connect()` method or `pgxpool.Connect()` method to create a connection object for the YugabyteDB database. This can be used to perform DDLs and DMLs against the database.
+Use the `pgx.Connect()` method or `pgxpool.New()` method to create a connection object for the YugabyteDB database. This can be used to perform DDLs and DMLs against the database.
 
 The following table describes the connection parameters required to connect, including [smart driver parameters](../../smart-drivers/) for uniform and topology load balancing.
 
@@ -208,7 +207,7 @@ import (
     "strconv"
     "time"
 
-    "github.com/yugabyte/pgx/v4"
+    "github.com/yugabyte/pgx/v5"
 )
 
 const (
@@ -433,7 +432,7 @@ Closing 12 connections ...
 Closing the application ...
 ```
 
-### Step 4 : Write your application with pgxpool.Connect()
+### Step 4 : Write your application with pgxpool.New()
 
 Create a file called `QuickStart2.go` and add the following contents into it:
 
@@ -450,8 +449,8 @@ import (
     "sync"
     "time"
 
-    "github.com/yugabyte/pgx/v4"
-    "github.com/yugabyte/pgx/v4/pgxpool"
+    "github.com/yugabyte/pgx/v5"
+    "github.com/yugabyte/pgx/v5/pgxpool"
 )
 
 const (
@@ -496,7 +495,7 @@ func main() {
 func initPool(url string) {
     var err error
     fmt.Printf("Initializing pool with url %s\n", url)
-    pool, err = pgxpool.Connect(context.Background(), url)
+    pool, err = pgxpool.New(context.Background(), url)
     if err != nil {
         log.Fatalf("Error initializing the pool: %s", err.Error())
     }
