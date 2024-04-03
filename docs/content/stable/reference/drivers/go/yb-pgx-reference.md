@@ -52,7 +52,7 @@ You can import the YugabyteDB PGX driver package by adding the following import 
 
 ```go
 import (
-  "github.com/yugabyte/pgx/v4"
+  "github.com/yugabyte/pgx/v5"
 )
 ```
 
@@ -185,16 +185,16 @@ The YugabyteDB PGX driver also provides pool APIs via the `pgxpool` package. You
 
 ```go
 import (
-  "github.com/yugabyte/pgx/tree/master/pgxpool"
+  "github.com/yugabyte/pgx/v5/pgxpool"
 )
 ```
 
 ### Establish a connection
 
-The primary way of establishing a connection is with `pgxpool.Connect()`.
+The primary way of establishing a connection is with `pgxpool.New()`.
 
 ```go
-pool, err := pgxpool.Connect(context.Background(), os.Getenv("DATABASE_URL"))
+pool, err := pgxpool.New(context.Background(), os.Getenv("DATABASE_URL"))
 ```
 
 You can also provide configuration for the pool as follows:
@@ -208,7 +208,7 @@ config.AfterConnect = func(ctx context.Context, conn *pgx.Conn) error {
     // do something with every new connection
 }
 
-pool, err := pgxpool.ConnectConfig(context.Background(), config)
+pool, err := pgxpool.NewWithConfig(context.Background(), config)
 ```
 
 You can either `Acquire` a connection from the pool and execute queries on it, or use the Query API to directly execute SQLs on the pool.
@@ -259,7 +259,7 @@ $ export PGSSLROOTCERT=~/root.crt  # Here, the CA certificate file is downloaded
 | prefer (default) | SSL enabled only if server requires SSL connection | Supported
 | require | SSL enabled for data encryption and Server identity is not verified | Supported
 | verify-ca | SSL enabled for data encryption and Server CA is verified | Supported
-| verify-full | SSL enabled for data encryption. Both CA and hostname of the certificate are verified | Supported
+| verify-full | SSL enabled for data encryption. Both CA and hostname of the certificate are verified | Supported *(SAN Certificate Required)
 
 ## Transaction and isolation levels
 
