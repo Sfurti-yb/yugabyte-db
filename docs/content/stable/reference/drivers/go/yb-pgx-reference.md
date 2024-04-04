@@ -259,7 +259,7 @@ $ export PGSSLROOTCERT=~/root.crt  # Here, the CA certificate file is downloaded
 | prefer (default) | SSL enabled only if server requires SSL connection | Supported
 | require | SSL enabled for data encryption and Server identity is not verified | Supported
 | verify-ca | SSL enabled for data encryption and Server CA is verified | Supported
-| verify-full | SSL enabled for data encryption. Both CA and hostname of the certificate are verified | Supported *(SAN Certificate Required)
+| verify-full | SSL enabled for data encryption. Both CA and hostname of the certificate are verified | Supported
 
 ## Transaction and isolation levels
 
