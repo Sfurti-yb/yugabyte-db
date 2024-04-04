@@ -79,7 +79,6 @@ To install the package locally, run the following commands:
 mkdir yb-pgx
 cd yb-pgx
 go mod init hello
-go mod tidy
 ```
 
 Optionally, you can choose to import the pgxpool package instead. Refer to [Use pgxpool API](../../../reference/drivers/go/yb-pgx-reference/#use-pgxpool-api) to learn more.
@@ -392,6 +391,12 @@ The **const** values are set to the defaults for a local installation of Yugabyt
 - **dbname** - The name of the YugabyteDB database. The default name is **yugabyte**.
 - **port** is set to 5433, which is the default port for the YSQL API.
 
+Download the included packages and dependencies:
+
+```go
+go mod tidy
+```
+
 Run the project `QuickStartApp.go` using the following command:
 
 ```go
@@ -627,6 +632,12 @@ func printAZInfo() {
 The **const** values are set to the defaults for a local installation of YugabyteDB. If you are using YugabyteDB Managed, replace the **const** values in the file as mentioned in [pgx.Connect()](#step-3-write-your-application-with-pgx-connect).
 
 ## Run the application
+
+Download the included packages and dependencies:
+
+```go
+go mod tidy
+```
 
 Run the project `QuickStartApp2.go` using the following command:
 
