@@ -230,7 +230,7 @@ _, err = conn.Exec(context.Background(), createStmt)
 rows, err := pool.Query(context.Background(), "SELECT name, age, language FROM employee WHERE id = 1")
 ```
 
-For more details, see the [pgxpool package](https://pkg.go.dev/github.com/jackc/pgx/v4/pgxpool) documentation.
+For more details, see the [pgxpool package](https://pkg.go.dev/github.com/jackc/pgx/v5/pgxpool) documentation.
 
 ## Configure SSL/TLS
 
