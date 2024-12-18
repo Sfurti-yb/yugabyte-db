@@ -1007,6 +1007,17 @@ class PgClient::Impl : public BigDataFetcher {
     return result;
   }
 
+  Result<std::string> GetUniverseUUID() {
+    tserver::PgGetUniverseUUIDRequestPB req;
+    tserver::PgGetUniverseUUIDResponsePB resp;
+
+    RETURN_NOT_OK(DoSyncRPC(&tserver::PgClientServiceProxy::GetUniverseUUID,
+        req, resp, ash::PggateRPC::kGetUniverseUUID));
+    RETURN_NOT_OK(ResponseStatus(resp));
+    return resp.universe_uuid();
+  }
+
+
   Status ValidatePlacement(tserver::PgValidatePlacementRequestPB* req) {
     tserver::PgValidatePlacementResponsePB resp;
     RETURN_NOT_OK(DoSyncRPC(&tserver::PgClientServiceProxy::ValidatePlacement,
@@ -1529,6 +1540,10 @@ Result<int32> PgClient::TabletServerCount(bool primary_only) {
 
 Result<client::TabletServersInfo> PgClient::ListLiveTabletServers(bool primary_only) {
   return impl_->ListLiveTabletServers(primary_only);
+}
+
+Result<std::string> PgClient::GetUniverseUUID() {
+  return impl_->GetUniverseUUID();
 }
 
 Status PgClient::SetActiveSubTransaction(

@@ -53,6 +53,8 @@ service PgClientService {
   rpc IsInitDbDone(PgIsInitDbDoneRequestPB) returns (PgIsInitDbDoneResponsePB);
   rpc ListLiveTabletServers(PgListLiveTabletServersRequestPB)
       returns (PgListLiveTabletServersResponsePB);
+  rpc GetUniverseUUID(PgGetUniverseUUIDRequestPB)
+      returns (PgGetUniverseUUIDResponsePB);
   rpc ListReplicationSlots(PgListReplicationSlotsRequestPB)
       returns (PgListReplicationSlotsResponsePB);
   rpc GetIndexBackfillProgress(PgGetIndexBackfillProgressRequestPB)
@@ -525,6 +527,15 @@ message PgGetReplicationSlotStatusResponsePB {
   AppStatusPB status = 1;
 
   ReplicationSlotStatus replication_slot_status = 2;
+}
+
+message PgGetUniverseUUIDRequestPB {
+  AshMetadataPB ash_metadata = 1;
+}
+
+message PgGetUniverseUUIDResponsePB {
+  AppStatusPB status = 1;
+  string universe_uuid = 2;  // The UUID of the universe.
 }
 
 message PgListLiveTabletServersRequestPB {

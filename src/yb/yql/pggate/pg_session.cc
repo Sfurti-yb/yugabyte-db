@@ -923,6 +923,10 @@ Result<client::TabletServersInfo> PgSession::ListTabletServers() {
   return pg_client_.ListLiveTabletServers(false);
 }
 
+Result<std::string> PgSession::GetUniverseUUID() {
+  return pg_client_.GetUniverseUUID();
+}
+
 Status PgSession::GetIndexBackfillProgress(std::vector<PgObjectId> index_ids,
                                            uint64_t** backfill_statuses) {
   return pg_client_.GetIndexBackfillProgress(index_ids, backfill_statuses);

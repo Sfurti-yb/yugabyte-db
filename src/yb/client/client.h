@@ -735,6 +735,7 @@ class YBClient {
   Result<std::vector<YBTabletServer>> ListTabletServers();
 
   Result<TabletServersInfo> ListLiveTabletServers(bool primary_only = false);
+  Result<std::string> GetUniverseUUID();
 
   // Sets local tserver and its proxy.
   void SetLocalTabletServer(const std::string& ts_uuid,

@@ -2837,6 +2837,8 @@ yb_servers(PG_FUNCTION_ARGS)
 		{
 			TupleDescInitEntry(tupdesc, (AttrNumber) 9,
 							   "uuid", TEXTOID, -1, 0);
+			TupleDescInitEntry(tupdesc, (AttrNumber) 10,
+							   "universe_uuid", TEXTOID, -1, 0);
 		}
 		funcctx->tuple_desc = BlessTupleDesc(tupdesc);
 
@@ -2871,6 +2873,7 @@ yb_servers(PG_FUNCTION_ARGS)
 		if (ncols >= expected_ncols)
 		{
 			values[8] = CStringGetTextDatum(server->uuid);
+			values[9] = CStringGetTextDatum(server->universe_uuid);
 		}
 		memset(nulls, 0, sizeof(nulls));
 		tuple = heap_form_tuple(funcctx->tuple_desc, values, nulls);

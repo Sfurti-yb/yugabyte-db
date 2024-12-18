@@ -741,6 +741,7 @@ class PgApiImpl {
   Result<yb::tserver::PgGetLockStatusResponsePB> GetLockStatusData(
       const std::string &table_id, const std::string &transaction_id);
   Result<client::TabletServersInfo> ListTabletServers();
+  Result<std::string> GetUniverseUUID();
 
   Status GetIndexBackfillProgress(std::vector<PgObjectId> oids,
                                   uint64_t** backfill_statuses);

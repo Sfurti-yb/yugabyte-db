@@ -2090,6 +2090,10 @@ Result<client::TabletServersInfo> PgApiImpl::ListTabletServers() {
   return pg_session_->ListTabletServers();
 }
 
+Result<std::string> PgApiImpl::GetUniverseUUID() {
+  return pg_session_->GetUniverseUUID();
+}
+
 Status PgApiImpl::GetIndexBackfillProgress(std::vector<PgObjectId> oids,
                                            uint64_t** backfill_statuses) {
   return pg_session_->GetIndexBackfillProgress(oids, backfill_statuses);

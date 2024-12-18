@@ -1126,6 +1126,20 @@ class PgClientServiceImpl::Impl {
     return Status::OK();
   }
 
+  Status GetUniverseUUID(
+      const PgGetUniverseUUIDRequestPB& req,
+      PgGetUniverseUUIDResponsePB* resp,
+      rpc::RpcContext* context) { 
+    const auto universe_uuid = client().GetUniverseUUID();
+    if (!universe_uuid.ok()) {
+      return universe_uuid.status();
+      }
+        
+    resp->set_universe_uuid(*universe_uuid);
+    resp->mutable_status()->set_code(AppStatusPB::OK);
+    return Status::OK();
+  }
+
   Status ListReplicationSlots(
       const PgListReplicationSlotsRequestPB& req, PgListReplicationSlotsResponsePB* resp,
       rpc::RpcContext* context) {

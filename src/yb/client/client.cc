@@ -2066,6 +2066,14 @@ Result<TabletServersInfo> YBClient::ListLiveTabletServers(bool primary_only) {
   return result;
 }
 
+Result<std::string> YBClient::GetUniverseUUID() {
+    GetMasterClusterConfigRequestPB req;
+    GetMasterClusterConfigResponsePB resp;
+    CALL_SYNC_LEADER_MASTER_RPC_EX(Cluster, req, resp, GetMasterClusterConfig);
+    master::SysClusterConfigEntryPB* sys_cluster_config_entry = resp.mutable_cluster_config();
+    return sys_cluster_config_entry->universe_uuid();
+  }
+
 void YBClient::SetLocalTabletServer(const string& ts_uuid,
                                     const shared_ptr<tserver::TabletServerServiceProxy>& proxy,
                                     const tserver::LocalTabletServer* local_tserver) {

@@ -170,6 +170,7 @@ class PgClient {
   Result<int32> TabletServerCount(bool primary_only);
 
   Result<client::TabletServersInfo> ListLiveTabletServers(bool primary_only);
+  Result<std::string> GetUniverseUUID();
 
   Status SetActiveSubTransaction(
       SubTransactionId id, tserver::PgPerformOptionsPB* options);

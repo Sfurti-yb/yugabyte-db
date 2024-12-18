@@ -228,6 +228,7 @@ const Configuration kMiscRPCs{
   .rpc_list = {
     ash::PggateRPC::kGetLockStatus,
     ash::PggateRPC::kListLiveTabletServers,
+    ash::PggateRPC::kGetUniverseUUID,
     ash::PggateRPC::kGetTableDiskSize,
     ash::PggateRPC::kTabletsMetadata,
     ash::PggateRPC::kYCQLStatementStats,

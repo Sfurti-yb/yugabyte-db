@@ -78,6 +78,7 @@ class TserverXClusterContextIf;
     (IsObjectPartOfXRepl) \
     (ListClones) \
     (ListLiveTabletServers) \
+    (GetUniverseUUID) \
     (ListReplicationSlots) \
     (OpenTable) \
     (ReadSequenceTuple) \

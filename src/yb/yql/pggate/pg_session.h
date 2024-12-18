@@ -215,6 +215,7 @@ class PgSession : public RefCountedThreadSafe<PgSession> {
   // Smart driver functions.
   // -------------
   Result<client::TabletServersInfo> ListTabletServers();
+  Result<std::string> GetUniverseUUID();
 
   Status GetIndexBackfillProgress(std::vector<PgObjectId> index_ids, uint64_t** backfill_statuses);
 
